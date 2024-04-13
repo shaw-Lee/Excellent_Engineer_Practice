@@ -61,13 +61,13 @@ public class VisibilityTest {
         VisibilityTest test = new VisibilityTest();
 
         // 线程threadA模拟数据加载场景
-        Thread threadA = new Thread(() -> test.load(), "threadA");
+        Thread threadA = new Thread(test::load, "threadA");
         threadA.start();
 
         // 让threadA执行一会儿
         Thread.sleep(1000);
         // 线程threadB通过flag控制threadA的执行时间
-        Thread threadB = new Thread(() -> test.refresh(), "threadB");
+        Thread threadB = new Thread(test::refresh, "threadB");
         threadB.start();
 
     }

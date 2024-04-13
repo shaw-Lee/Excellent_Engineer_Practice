@@ -33,6 +33,9 @@ public class AppTest
      */
     public void testApp()
     {
+        Long a = 129L;
+        Long b = 129L;
+        System.out.println(a.equals(b));
         assertTrue( true );
     }
 }
