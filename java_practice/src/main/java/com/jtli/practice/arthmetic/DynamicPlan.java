@@ -77,9 +77,11 @@ public class DynamicPlan {
         if (i==0|| j==0){
             c[i][j]=0;
         }else{
+            // 求取上一步(i-1)最优解，之前没有就是0 ，会在i==0时初始化为0；
             c[i][j] = Calculate_Max_Value(v,w,i-1,j);
             if (j>=w[i]){ //是否可装入
-                // 递归求解当前步骤最优解
+                // 递归求解当前步骤最优解,
+                // 去除当前重量的最优解(这里有一个找表的过程,会从之前计算的结果中找到一个最大值)+当前价值=当前重量下的最优解(temp)
                 temp = Calculate_Max_Value(v,w,i-1,j-w[i])+v[i];
                 if (c[i][j] < temp) {
                     c[i][j] = temp;
